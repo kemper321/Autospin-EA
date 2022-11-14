@@ -1,7 +1,5 @@
-local WantedMagics = {Nagic} -- Put what elements you want between the quotation marks
-local WantedRarities = {Narity} -- Put the name of the rarities you want between the quotation marks
-
-
+local WantedMagics = {"Time","Reality Collapse","Celestial","Eclipse","Blood","","","","",""} -- Put what elements you want between the quotation marks
+local WantedRarities = {"Heavenly","Legendary","Exotic","","",""} -- Put the name of the rarities you want between the quotation marks
 
 -- Script will stop rolling if a wanted rarity or wanted magic is rolled. You can change between the quotation marks to whatever you want in the list below, as long as it's in the right category
 
@@ -39,17 +37,8 @@ local WantedRarities = {Narity} -- Put the name of the rarities you want between
 
 --]]
 
-repeat wait() until game.Players.LocalPlayer ~= nil
-
-local HasGamepass = game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game.Players.LocalPlayer.UserId,20164545)
-
 while wait(0.00001) do
-    local Magic, Rarity
-    if HasGamepass then
-         Magic, Rarity = game:GetService("ReplicatedStorage").Events.Spin:InvokeServer(true)
-    else
-         Magic, Rarity = game:GetService("ReplicatedStorage").Events.Spin:InvokeServer(false)
-    end
+    local Magic, Rarity = game:GetService("ReplicatedStorage").Events.Spin:InvokeServer(false)
     if Magic == nil or Rarity == nil then
         print("Out of spins!")
         break
